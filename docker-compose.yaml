@@ -28,7 +28,7 @@ services:
       - mysql
     command: bash -c "java -jar /opt/app.jar"
     network:
-      - backend
+      - "backend"
 networks:
   backend:
-    name: 'backend-network'
+    name: backend-network
