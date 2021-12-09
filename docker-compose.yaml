@@ -24,7 +24,7 @@ services:
     ports:
       - 8090:8090
     restart: always
-    depens_on:
+    depends_on:
       - mysql
     command: bash -c "java -jar /opt/app.jar"
     network:
