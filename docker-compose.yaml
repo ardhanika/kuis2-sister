@@ -1,34 +1,34 @@
 version: '3.5'
 services:
 
-	mysql:
-		image: mysql:latest
-		container_name: mysql-db
-			environment:
-			MYSQL_ROOT_PASSWORD: 'root21A.'
-			MYSQL_DATABSE: 'batiku'
-			MYSQL_USER: 'ardhanika'
-			MYSQL_PASSWORD: 'root21A.'
-		volumes:
-			- /home/ubuntu/batiku/opt/app:/var/lib/mysql
-			- .docker/batiku.sql:/docker-entrypoint-initdb.d/batiku.sql
-		ports:
-			- 3306:3306
-		restart: always
-		networks:
-			- backend
+  mysql:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root21A.'
+      MYSQL_DATABSE: 'batiku'
+      MYSQL_USER: 'ardhanika'
+      MYSQL_PASSWORD: 'root21A.'
+    volumes:
+      - /home/ubuntu/batiku/opt/app:/var/lib/mysql
+      - .docker/batiku.sql:/docker-entrypoint-initdb.d/batiku.sql
+    ports:
+      - 3306:3306
+    restart: always
+    networks:
+      - backend
 
-	app:
-		image: ardhanika/kuis-ardhanika
-		container_name: 
-		ports:
-			- 8090:8090
-		restart: always
-		depens_on:
-			- mysql
-		command: bash -c "java -jar /opt/app.jar"
-		network:
-			- backend
+  app:
+    image: ardhanika/kuis-ardhanika
+    container_name: 
+    ports:
+      - 8090:8090
+    restart: always
+    depens_on:
+      - mysql
+    command: bash -c "java -jar /opt/app.jar"
+    network:
+      - backend
 networks:
-	backend:
-		name: backend-network
+  backend:
+    name: backend-network
