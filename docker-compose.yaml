@@ -20,7 +20,7 @@ services:
 
   app:
     image: ardhanika/kuis-ardhanika
-    container_name: ardhanika/kuis-ardhanika
+    container_name: 3cd3978e54e5
     ports:
       - 8090:8090
     restart: always
@@ -28,7 +28,7 @@ services:
       - mysql
     command: bash -c "java -jar /opt/app.jar"
     network:
-      - backend
+      - backend		
 networks:
   backend:
     name: backend-network
